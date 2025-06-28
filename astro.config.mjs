@@ -14,6 +14,7 @@ import { remarkDescPlugin } from "./src/utils/markdown.ts";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
+  publicDir: "./src/content/posts/how-to",
   markdown: {
     shikiConfig: {
       theme: "dracula",

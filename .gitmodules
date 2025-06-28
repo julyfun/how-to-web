@@ -1,0 +1,4 @@
+
+[submodule "src/content/posts/en/how-to"]
+	path = src/content/posts/en/how-to
+	url = git@github.com:julyfun/how-to

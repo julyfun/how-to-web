@@ -6,12 +6,12 @@ import { type CollectionEntry, z } from "astro:content";
 export type Slug = string;
 
 export const PostFrontmatterSchema = z.object({
-  title: z.string(),
+  title: z.string().default("To be titled"),
   description: z.string().optional(),
-  tags: z.array(z.string()),
+  tags: z.array(z.string()).default([]),
   categories: z.array(z.string()).optional(),
   abbrlink: z.string().optional(),
-  date: z.date(),
+  date: z.date().default(new Date("2023-07-03")),
   updated: z.date().optional(),
   license: z.string().optional(),
   licenseLink: z.string().optional(),

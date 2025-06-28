@@ -1,19 +1,19 @@
 export const SITE = {
   title: {
-    en: "BlockLune's Blog",
-    zh: "BlockLune's Blog",
+    en: "« Minimal Replication »",
+    zh: "『最小化可复现』",
   },
   description: {
-    en: "A blog about development and life, powered by Astro.",
-    zh: "一个关于开发和生活的博客，由 Astro 驱动。",
+    en: "A how-to blog",
+    zh: "复现问题，解决问题",
   },
-  url: "https://blocklune.cc",
+  url: "https://how-to.fun",
   og: {
     imageUrl: "/ogimage.jpg",
   },
   analytics: {
     umami: {
-      id: "ab70a625-ed64-484a-9c34-803e1c598bf9",
+      id: "61c1c4cf-ada2-4371-8131-a4a70bdd93c7",
     },
   },
   searchEngine: {
@@ -25,9 +25,10 @@ export const SITE = {
 };
 
 export const AUTHOR = {
-  name: "BlockLune",
-  link: "https://github.com/BlockLune",
-  email: "i@blocklune.cc",
+  name: "Julyfun",
+  avatarUrl: "https://avatars.githubusercontent.com/u/43675484?v=4",
+  link: "https://github.com/julyfun",
+  email: "julyfun.collect@outlook.com",
   bio: {
     en: "A student majoring in computer science and technology.",
     zh: "一名计算机科学与技术专业的学生。",
@@ -37,7 +38,7 @@ export const AUTHOR = {
 export const SOCIALS = [
   {
     name: "Github",
-    href: "https://github.com/BlockLune",
+    href: "https://github.com/julyfun",
     linkTitle: `${AUTHOR.name} on Github`,
   },
   {

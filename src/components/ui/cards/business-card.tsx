@@ -16,7 +16,7 @@ export default function BusinessCard({ lang }: { lang: Lang }) {
       className="card-static p-8 text-pretty flex flex-col sm:flex-row gap-12 items-center w-full md:w-2/3"
     >
       <motion.img
-        src={avatarImage.src}
+        src={AUTHOR.avatarUrl}
         alt="avatar"
         className="w-32 h-32 shadow-lg"
         whileHover={{ scale: 1.1 }}
