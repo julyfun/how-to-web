@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import PostStack from "@/components/ui/post-stack";
+import BaseLayout from "@/layouts/base-layout.astro";
+import { supportedLangs } from "@/utils/i18n";
+import { getSnapshots } from "@/utils/post";
+import { MISC } from "@/config";
+
+const posts = await getCollection("posts");
+
+const { lang } = Astro.params;
+const snapshots = await getSnapshots(posts, lang);
+
+export function getStaticPaths() {
+  return supportedLangs.map((lang) => ({
+    params: { lang },
+  }));
+}
+---
+
+<BaseLayout>
+  <PostStack
+    lang={lang}
+    initialSnapshots={snapshots.slice(0, MISC.postStack.initialLimit)}
+    totalPostCount={snapshots.length}
+    client:load
+  />
+</BaseLayout>
