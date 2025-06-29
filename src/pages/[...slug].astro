@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 
 const { post, headings } = Astro.props;
 const { slug } = Astro.params;
-const ogImageUrlToUse = post?.data.ogImageUrl || `/og-images/${slug}.png`;
+const ogImageUrlToUse = post?.data.ogImageUrl || `/ogimage.jpg`;
 ---
 
 <BaseLayout
