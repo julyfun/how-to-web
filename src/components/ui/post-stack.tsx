@@ -16,7 +16,7 @@ async function fetchPostSnapshotByRank(
   rank: number,
   lang: Lang,
 ): Promise<PostSnapshot> {
-  const response = await fetch(`/${lang}/posts/snapshots/${rank}.json`);
+  const response = await fetch(`/snapshots/${rank}.json`);
   if (!response.ok) {
     throw new Error(
       `Failed to fetch post snapshot with rank ${rank}. Status: ${response.status}`,
@@ -27,7 +27,7 @@ async function fetchPostSnapshotByRank(
 }
 
 async function fetchAllPostSnapshots(lang: Lang): Promise<PostSnapshot[]> {
-  const response = await fetch(`/${lang}/posts/snapshots/index.json`);
+  const response = await fetch(`/snapshots/index.json`);
   if (!response.ok) {
     throw new Error(
       `Failed to fetch post snapshots. Status: ${response.status}`,

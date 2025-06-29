@@ -1,13 +1,11 @@
 ---
 import Moon from "@/components/icons/moon.astro";
 import Rss from "@/components/icons/rss.astro";
-import LanguagePicker from "@/components/ui/language-picker.astro";
 import { SITE } from "@/config";
-import { type Lang, useTranslatedPath, useTranslations } from "@/utils/i18n";
+import { type Lang, useTranslations } from "@/utils/i18n";
 
 const { lang, asH1 = true } = Astro.props;
 const t = useTranslations(lang);
-const translatePath = useTranslatedPath(lang);
 ---
 
 <header
@@ -15,7 +13,7 @@ const translatePath = useTranslatedPath(lang);
 >
   <div class="flex gap-2 itmes-center justify-center">
     <a
-      href={translatePath("/")}
+      href="/"
       class="ghost-link flex items-center justify-center md:justify-start gap-2 font-black text-2xl"
     >
       <Moon />
@@ -36,16 +34,14 @@ const translatePath = useTranslatedPath(lang);
     </a>
   </div>
   <div class="flex justify-center md:justify-end items-center gap-4">
-    <a class="ghost-link-underline" href={translatePath("/")}>
+    <a class="ghost-link-underline" href="/">
       {t("nav.home")}
     </a>
-    <a class="ghost-link-underline" href={translatePath("/tags")}>
+    <a class="ghost-link-underline" href="/tags">
       {t("nav.tags")}
     </a>
-    <a class="ghost-link-underline" href={translatePath("/about")}>
+    <a class="ghost-link-underline" href="/about">
       {t("nav.about")}
     </a>
-    |
-    <LanguagePicker />
   </div>
 </header>

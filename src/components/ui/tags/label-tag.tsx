@@ -30,7 +30,7 @@ export default function LabelTag({
   );
   const linkTagOrNot =
     type === "link" ? (
-      <a href={`/${lang}/tags/${label}`}>{tagComponent}</a>
+      <a href={`/tags/${label}`}>{tagComponent}</a>
     ) : (
       tagComponent
     );

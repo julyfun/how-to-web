@@ -1,5 +1,20 @@
 ---
-import { defaultLang, useTranslatedPath } from "@/utils/i18n";
-const translatedPath = useTranslatedPath(defaultLang);
-return Astro.rewrite(translatedPath("/"));
+import { getCollection } from "astro:content";
+import PostStack from "@/components/ui/post-stack";
+import BaseLayout from "@/layouts/base-layout.astro";
+import { defaultLang } from "@/utils/i18n";
+import { getSnapshots } from "@/utils/post";
+import { MISC } from "@/config";
+
+const posts = await getCollection("posts");
+const snapshots = await getSnapshots(posts, defaultLang);
 ---
+
+<BaseLayout>
+  <PostStack
+    lang={defaultLang}
+    initialSnapshots={snapshots.slice(0, MISC.postStack.initialLimit)}
+    totalPostCount={snapshots.length}
+    client:load
+  />
+</BaseLayout>

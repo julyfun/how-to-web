@@ -1,5 +1,17 @@
 ---
-import { defaultLang, useTranslatedPath } from "@/utils/i18n";
-const translatedPath = useTranslatedPath(defaultLang);
-return Astro.rewrite(translatedPath("/tags"));
+import { getCollection } from "astro:content";
+import TagGroup from "@/components/ui/tag-group.tsx";
+import BaseLayout from "@/layouts/base-layout.astro";
+import { defaultLang, useTranslations } from "@/utils/i18n";
+import { getSnapshots, getUniqueLowerCaseTagMap } from "@/utils/post";
+
+const posts = await getCollection("posts");
+const tags = getUniqueLowerCaseTagMap(
+  (await getSnapshots(posts, defaultLang)).flatMap((post) => post.tags),
+);
+const t = useTranslations(defaultLang);
 ---
+
+<BaseLayout title={t("nav.tags")} description={t("nav.tags.description")}>
+  <TagGroup lang={defaultLang} tagMap={tags} client:load />
+</BaseLayout>

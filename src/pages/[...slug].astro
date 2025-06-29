@@ -8,11 +8,16 @@ import { render } from "astro:content";
 import { defaultLang } from "@/utils/i18n";
 
 export async function getStaticPaths() {
+  const reservedPaths = ["about", "tags", "rss.xml", "og-images", "snapshots"];
   const posts = await getCollection("posts");
   const paths = [];
 
   for (const post of posts) {
     const slug = post.id;
+    if (reservedPaths.includes(slug.split("/")[0])) {
+      continue; // 跳过与保留路径冲突的文章
+    }
+
     const headings = (await render(post)).headings;
     paths.push({
       params: { slug },

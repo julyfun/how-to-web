@@ -14,16 +14,15 @@ export async function GET(context: any) {
     description: SITE.description[defaultLang],
     site: context.site,
     items: posts.map((post: Post) => {
-      const lang = getLangFromId(post.id);
       const slug = getSlugFromId(post.id);
       return {
         title: post.data.title,
         description: getDescFromMdString(post.body),
         author: AUTHOR.name,
         pubDate: post.data.date,
-        link: `${lang}/posts/${slug}`,
+        link: `${slug}`,
         enclosure: {
-          url: `${lang}/og-images/${slug}.png`,
+          url: `og-images/${slug}.png`,
           length: 0,
           type: "image/png",
         },
