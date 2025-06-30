@@ -2,6 +2,7 @@ import type { Post, Slug } from "@/schemas/post";
 import type { PostSnapshot } from "@/schemas/post";
 import { type Lang, defaultLang } from "@/utils/i18n";
 import { getDescFromMdString } from "@/utils/markdown";
+import { MISC } from "@/config";
 
 export const getLangFromId = (id: string): Lang => {
   const [lang] = id.split("/");
@@ -63,8 +64,22 @@ export const getSnapshots = async (
 ): Promise<PostSnapshot[]> => {
   const uniquePosts = makeUniqueByLang(posts, expectedLang);
   const sorted = uniquePosts.sort((a, b) => {
+    const slugA = getSlugFromId(a.id);
+    const slugB = getSlugFromId(b.id);
+
+    const isPinnedA =
+      MISC.pinnedPosts?.enabled &&
+      MISC.pinnedPosts.patterns.some((pattern) => slugA.startsWith(pattern));
+    const isPinnedB =
+      MISC.pinnedPosts?.enabled &&
+      MISC.pinnedPosts.patterns.some((pattern) => slugB.startsWith(pattern));
+
+    if (isPinnedA && !isPinnedB) return -1;
+    if (!isPinnedA && isPinnedB) return 1;
+
     const dateA = a.data.updated || a.data.date;
     const dateB = b.data.updated || b.data.date;
+
     return dateB.getTime() - dateA.getTime();
   });
   return sorted.map((post) => {

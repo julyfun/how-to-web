@@ -71,4 +71,12 @@ export const MISC = {
     limitIncrement: 10,
     searchResultsLimit: 5,
   },
+  pinnedPosts: {
+    enabled: true,
+    patterns: [
+      "notes/julyfun/240730-摸鱼日志",
+      "notes/julyfun/25/",
+      "notes/julyfun/24/",
+    ],
+  },
 };
