@@ -1,6 +1,6 @@
 export const SITE = {
   title: {
-    en: "« Minimal Replication »",
+    en: "« Minimal Reproducible »",
     zh: "『最小化可复现』",
   },
   description: {
