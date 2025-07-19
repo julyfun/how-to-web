@@ -8,6 +8,8 @@ export const SITE = {
     zh: "复现问题，解决问题",
   },
   url: "https://how-to.fun",
+  // GitHub repository URL for the navigation
+  githubRepo: "https://github.com/julyfun/how-to",
   og: {
     imageUrl: "/ogimage.jpg",
   },

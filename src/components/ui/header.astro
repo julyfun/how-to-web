@@ -43,5 +43,14 @@ const t = useTranslations(lang);
     <a class="ghost-link-underline" href="/about">
       {t("nav.about")}
     </a>
+    <!-- GitHub navigation link -->
+    <a 
+      class="ghost-link-underline" 
+      href={SITE.githubRepo}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub
+    </a>
   </div>
 </header>
